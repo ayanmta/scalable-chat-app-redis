@@ -29,12 +29,18 @@ export const SocketProvider: React.FC<SocketProviderProps> = ({children}) => {
         console.log("send socket message",msg)
    socket && socket.emit("event:message",{message:msg})
     },[socket])
-        const onMessage
+        const onMessage = useCallback((msg:string)=>{
+        console.log("msg rec from server redis",msg)
+        },[])
     useEffect(()=>{
         const _socket = io("http://localhost:8000")
-        _socket.on("message",)
+        _socket.on('message',onMessage)
         setSocket(_socket)
-        return ()=> {_socket.disconnect()}
+        return ()=> {
+            _socket.disconnect()
+            _socket.off("message")
+            setSocket(null)
+        }
     },[])
     return (
     <SocketContext.Provider value={{sendMessage}}>
