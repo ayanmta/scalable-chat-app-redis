@@ -29,9 +29,10 @@ export const SocketProvider: React.FC<SocketProviderProps> = ({children}) => {
         console.log("send socket message",msg)
    socket && socket.emit("event:message",{message:msg})
     },[socket])
-        
+        const onMessage
     useEffect(()=>{
         const _socket = io("http://localhost:8000")
+        _socket.on("message",)
         setSocket(_socket)
         return ()=> {_socket.disconnect()}
     },[])

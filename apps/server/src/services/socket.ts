@@ -5,16 +5,16 @@ import { createAdapter } from "@socket.io/redis-streams-adapter";
 
 
 const pub=new Redis({
-    host:"caching-3c70657-mehtaayan18-5b7a.k.aivencloud.com",
+    host:process.env.AIVENHOST,
     port:11139,
-    username:"default",
-    password:"AVNS_sGxOUwt56IVsyv6PsTy"
+    username:process.env.AIVENPASS,
+    password:process.env.AIVENUSER
 })
 const sub=new Redis({
-    host:"caching-3c70657-mehtaayan18-5b7a.k.aivencloud.com",
+    host:process.env.AIVENHOST,
     port:11139,
-    username:"default",
-    password:"AVNS_sGxOUwt56IVsyv6PsTy"
+    username:process.env.AIVENPASS,
+    password:process.env.AIVENUSER
 })
 
 
